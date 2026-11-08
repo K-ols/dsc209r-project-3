@@ -24,8 +24,7 @@
 </div>
 <div id="legend" class="legend" aria-label="World regions"></div>
 <div id="charts" class="charts"></div>
-<p><strong>Start with 2000 and 2018.</strong> The overall relationship strengthened slightly, but spending alone leaves plenty of room for differences between countries. In 2018, Japan spent about $4,504 per person and reached 84.2 years of life expectancy. The U.S. spent about $10,624 and reached 78.6 years.</p>
-<div id="finding" aria-live="polite"></div>
+<p id="default-note"><strong>Start with 2000 and 2018.</strong> Spending alone leaves plenty of room for differences between countries. In 2018, Japan spent about $4,504 per person and reached 84.2 years of life expectancy. The U.S. spent about $10,624 and reached 78.6 years.</p><div id="finding" aria-live="polite"></div>
 
 <p id="pin-details" aria-live="polite"></p>
 </section>
@@ -67,7 +66,7 @@ const byYear = d3.group(data, d => d.year);
 const byCountry = d3.group(data, d => d.code);
 const regions = [...new Set(data.map(d => d.region))].sort();
 const color = d3.scaleOrdinal(regions, ['#0072b2','#a1471e','#804c9b','#00805e','#526875','#b62366','#8a6a00']);
-const x = d3.scaleLog(d3.extent(data, d => d.spend), [70, 585]).nice();
+const x = d3.scaleLog([5, 20000], [70, 585]);
 const y = d3.scaleLinear(d3.extent(data, d => d.life), [360, 44]).nice();
 const dollars = d3.format(',.0f');
 const years = d3.format('.1f');
@@ -120,7 +119,7 @@ function draw(panel, rows, year, history) {
   panel.append('text').attr('transform', 'translate(20,202) rotate(-90)').attr('text-anchor', 'middle').text('Life expectancy (years)');
   if (history.length > 1) {
     panel.append('path').datum(history).attr('fill', 'none').attr('stroke', '#153744').attr('stroke-width', 2)
-      .attr('d', d3.line().x(d => x(d.spend)).y(d => y(d.life)));
+       .attr('d', d3.line().defined(d => !d.gap).x(d => x(d.spend)).y(d => y(d.life)));
     panel.append('g').selectAll('circle').data(history).join('circle').attr('r', 2.4)
       .attr('cx', d => x(d.spend)).attr('cy', d => y(d.life)).attr('fill', '#153744');
   }
@@ -167,7 +166,8 @@ function render() {
   const priorCodes = new Set(previous.map(d => d.code));
   const nowRows = comparison ? current.filter(d => priorCodes.has(d.code)) : current;
   const priorRows = previous.filter(d => currentCodes.has(d.code));
-  const history = (byCountry.get(country.value) || []).filter(d => d.year <= year).sort((a, b) => a.year - b.year);
+  const history = (byCountry.get(country.value) || []).filter(d => d.year <= year).sort((a, b) => a.year - b.year)
+ .flatMap((d, i, arr) => i > 0 && d.year - arr[i - 1].year > 1 ? [{ gap: true }, d] : [d]);
   const panels = comparison ? [earlier, year] : [year];
   d3.select('#charts').selectAll('svg').data(panels).join('svg')
     .attr('viewBox', '0 0 610 420').attr('role', 'group')
@@ -175,7 +175,8 @@ function render() {
       const isCurrent = panelYear === year;
       draw(d3.select(this), isCurrent ? nowRows : priorRows, panelYear, isCurrent ? history : []);
     });
-
+    
+  document.querySelector('#default-note').hidden = !(comparison && earlier === 2000 && year === 2018);
   const rNow = correlation(nowRows);
   const rPrior = comparison ? correlation(priorRows) : null;
   const finding = document.querySelector('#finding');
