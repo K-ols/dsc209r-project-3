@@ -1,7 +1,8 @@
 
 # Healthcare Spending and Life Expectancy
 
-### DSC 209R — Project 3: Interactive Visualization
+**DSC 209R — Project 3: Interactive Visualization**  
+**UC San Diego | Fall 2026**
 
 **Team:** Worldwide Health Team
 
@@ -15,15 +16,13 @@
 
 ## Research Question
 
-**How does the relationship between healthcare spending and life expectancy vary across countries and over time?**
+### How does the relationship between healthcare spending and life expectancy vary across countries and over time?
 
 This project explores the relationship between healthcare spending and life expectancy using World Bank health indicators from 2000 to 2018.
 
 Our goal was to create an interactive visualization that allows users to compare countries, explore historical trends, and identify differences in healthcare spending and health outcomes.
 
-Each point represents a country or territory. The visualization uses healthcare spending per person and life expectancy at birth to explore patterns across different regions and years.
-
-### Interactive Visualization
+Each point represents a country or territory, with healthcare spending per person on the horizontal axis and life expectancy at birth on the vertical axis.
 
 **[Launch the Interactive D3 Visualization](https://thejustinrock.github.io/dsc-209r-project-3/index.html)**
 
@@ -31,17 +30,15 @@ Each point represents a country or territory. The visualization uses healthcare 
 
 ## Dataset
 
-**Source:** World Bank — World Development Indicators
-
-**Dataset:** Health Indicators (September 2021 snapshot)
-
+**Source:** World Bank — World Development Indicators  
+**Dataset:** Health Indicators (September 2021 snapshot)  
 **Time Period:** 2000–2018
 
-**Key Variables:**
+### Key Variables
 
 | Variable | Description |
 |---|---|
-| Healthcare Spending | Current health expenditure per capita in purchasing-power-adjusted international dollars |
+| Healthcare Spending | Current health expenditure per person in purchasing-power-adjusted international dollars |
 | Life Expectancy | Life expectancy at birth, measured in years |
 | Country | Country or territory associated with each observation |
 | Region | World Bank geographic region |
@@ -56,10 +53,10 @@ The data was prepared by:
 - Excluding World Bank aggregate regions and income groups.
 - Removing observations missing healthcare spending or life expectancy.
 - Excluding observations with zero or negative healthcare spending.
-- Using a logarithmic transformation of healthcare spending.
+- Using a logarithmic scale for healthcare spending.
 - Restricting two-year comparisons to countries with complete data in both selected years.
 
-The logarithmic scale helps display the large differences in healthcare expenditure across countries.
+These steps help ensure meaningful comparisons across countries and years.
 
 ### Data Sources
 
@@ -77,56 +74,35 @@ Our goal was to explore how healthcare spending and life expectancy vary across 
 
 We chose scatter plots because they make it easy to compare two numerical variables and identify patterns, clusters, and outliers.
 
-- **X-axis:** Healthcare spending per person, using a logarithmic scale to account for large differences between countries.
-- **Y-axis:** Life expectancy at birth, measured in years.
-- **Colors:** World Bank regions, making geographic patterns easier to identify.
-- **Side-by-side charts:** Two years displayed using identical axes to allow consistent comparisons.
+| Visual Element | Design Choice | Purpose |
+|---|---|---|
+| **X-Axis** | Healthcare spending per person (logarithmic scale) | Accommodates large spending differences between countries |
+| **Y-Axis** | Life expectancy at birth (years) | Allows direct comparison of health outcomes |
+| **Colors** | World Bank regions | Helps identify geographic patterns |
+| **Side-by-Side Charts** | Two years with identical axes | Enables consistent comparisons over time |
 
 We initially considered a single scatter plot with a year slider but ultimately chose a side-by-side comparison to make changes over time easier to recognize.
 
-Both charts use the same scales and matching countries, allowing users to compare the relationship across different years without being misled by changing axes or missing observations.
+Both charts use the same scales and matching countries, allowing users to compare the relationship across years without being misled by changing axes or missing observations.
 
 ### Interactive Features
 
-Our visualization includes several interactive features designed to encourage exploration.
+Our visualization includes several features designed to encourage exploration.
 
-**1. Year Selection**
-
-Users can adjust the year slider to explore the relationship between healthcare spending and life expectancy from 2000 to 2018.
-
-**2. Compare Two Years**
-
-The comparison feature displays two scatter plots side by side using identical axes.
-
-This makes it easier to identify how different countries and the overall relationship change over time.
-
-**3. Country Selection**
-
-Users can select or pin individual countries using the dropdown menu or by clicking directly on a point.
-
-Selected countries are highlighted, making them easier to follow across years.
-
-**4. Tooltips**
-
-Hovering over a country displays information about its healthcare spending and life expectancy.
-
-**5. Regional Colors**
-
-Countries are colored according to their World Bank geographic regions, making it easier to recognize regional patterns.
-
-**6. Correlation Analysis**
-
-The visualization displays Pearson's correlation between log healthcare spending and life expectancy.
-
-This helps users understand the strength of the relationship for the selected years.
+| Feature | Description |
+|---|---|
+| **Year Selection** | Adjust the slider to explore data from 2000 to 2018. |
+| **Compare Two Years** | View two scatter plots side by side with identical axes to compare changes over time. |
+| **Country Selection** | Click a point or use the dropdown to highlight a country and trace its trajectory. |
+| **Tooltips** | Hover over a country to view its healthcare spending and life expectancy. |
+| **Regional Colors** | Identify geographic patterns using colors assigned to World Bank regions. |
+| **Correlation Analysis** | Compare Pearson's correlation between log healthcare spending and life expectancy across selected years. |
 
 ### Design Considerations
 
-We focused on healthcare spending and life expectancy rather than including every variable from the dataset.
+We focused on healthcare spending and life expectancy rather than including every variable from the dataset. Our goal was to keep the visualization simple and easy to navigate while still allowing users to explore meaningful patterns.
 
-Our goal was to keep the visualization straightforward while allowing users to explore meaningful patterns.
-
-We also wanted the interactive features to provide additional insights beyond what a static visualization could show.
+By combining year comparisons, country selection, and interactive details, users can investigate differences that would be harder to recognize in a static visualization.
 
 ---
 
@@ -166,10 +142,10 @@ Maintaining consistent axes and comparing countries with complete data for both 
 
 | Team Member | Contributions |
 |---|---|
-| Jiamin (Carmen) Wu | Data cleaning, exploratory graphs, and initial D3 prototype |
-| Justin Chanthabandith | [Confirm development and deployment contributions] |
-| Matthew Takeuchi | [Confirm project contributions] |
-| Kristen Oleson | Checkpoint video coordination and editing, reviewing exploratory graphs and research question, and documentation |
+| **Jiamin (Carmen) Wu** | Data cleaning, exploratory graphs, and initial D3 prototype |
+| **Justin Chanthabandith** | [Confirm development and deployment contributions] |
+| **Matthew Takeuchi** | [Confirm project contributions] |
+| **Kristen Oleson** | Checkpoint video coordination and editing, reviewing exploratory graphs and research question, and documentation |
 
 ### Development Time
 
@@ -181,9 +157,9 @@ The most time-consuming aspects were **[confirm main development challenges]**, 
 
 ## Key Findings
 
-Our visualization shows a strong positive relationship between healthcare spending per person and life expectancy.
+Our visualization shows a strong positive association between healthcare spending per person and life expectancy.
 
-Across 172 countries and territories with data in both 2000 and 2018, the correlation between log healthcare spending and life expectancy increased from **0.80 in 2000 to 0.84 in 2018**.
+Across **172 countries and territories** with data in both 2000 and 2018, the correlation between log healthcare spending and life expectancy increased from **0.80 in 2000** to **0.84 in 2018**.
 
 However, higher spending did not always correspond to longer life expectancy.
 
@@ -204,11 +180,13 @@ These findings demonstrate that healthcare spending alone does not fully explain
 
 ## Technologies Used
 
-- **D3.js:** Interactive data visualization
-- **JavaScript:** Data handling and interaction logic
-- **HTML:** Page structure
-- **CSS:** Styling and responsive layout
-- **GitHub Pages:** Web deployment
+| Technology | Purpose |
+|---|---|
+| **D3.js** | Interactive data visualization |
+| **JavaScript** | Data handling and interaction logic |
+| **HTML** | Webpage structure |
+| **CSS** | Styling and layout |
+| **GitHub Pages** | Hosting and deployment |
 
 ---
 
@@ -216,8 +194,9 @@ These findings demonstrate that healthcare spending alone does not fully explain
 
 - **[Live Interactive Visualization](https://thejustinrock.github.io/dsc-209r-project-3/index.html)**
 - **[Original Project Repository](https://github.com/thejustinrock/dsc-209r-project-3)**
-- **[World Bank Data](https://data.worldbank.org/indicator)**
+- **[World Bank Open Data](https://data.worldbank.org/indicator)**
 
 ---
 
 *DSC 209R — Data Visualization | UC San Diego | Fall 2026*
+
