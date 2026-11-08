@@ -138,14 +138,16 @@ We wanted users to explore the data independently without overwhelming them with
 
 Maintaining consistent axes and comparing countries with complete data for both selected years were also important considerations.
 
+
 ### Team Contributions
 
 | Team Member | Contributions |
 |---|---|
-| **Jiamin (Carmen) Wu** | Data cleaning, exploratory graphs, and initial D3 prototype |
-| **Justin Chanthabandith** | [Confirm development and deployment contributions] |
-| **Matthew Takeuchi** | [Confirm project contributions] |
-| **Kristen Oleson** | Checkpoint video coordination and editing, reviewing exploratory graphs and research question, and documentation |
+| **Jiamin (Carmen) Wu** | Proposed the research question and World Bank dataset, cleaned the data, created six exploratory graphs, and developed the initial D3 prototype. |
+| **Justin Chanthabandith** | Coordinated the team, expanded and refined the D3 prototype into the final interactive visualization, and maintained the GitHub repository. Also helped record the checkpoint video. |
+| **Matthew Takeuchi** | Contributed to discussions about the dataset and research question, helped coordinate and record the checkpoint video, and submitted it to Canvas. |
+| **Kristen Oleson** | Reviewed the exploratory graphs, helped coordinate the checkpoint video, contributed to research question discussions, wrote the design rationale and development process documentation, and updated the project README. |
+
 
 ### Development Time
 
