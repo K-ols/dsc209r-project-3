@@ -23,7 +23,7 @@ Our goal was to create an interactive visualization that allows users to compare
 
 Each point represents a country or territory, with healthcare spending per person on the horizontal axis and life expectancy at birth on the vertical axis.
 
-**[Launch the Interactive D3 Visualization](https://thejustinrock.github.io/dsc-209r-project-3/index.html)**
+**[Launch the Interactive D3 Visualization](https://k-ols.github.io/dsc209r-project-3/)**
 
 ---
 
