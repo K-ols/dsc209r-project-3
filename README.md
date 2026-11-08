@@ -1,4 +1,3 @@
-
 # Healthcare Spending and Life Expectancy
 
 **DSC 209R — Project 3: Interactive Visualization**  
@@ -31,17 +30,17 @@ Each point represents a country or territory, with healthcare spending per perso
 ## Dataset
 
 **Source:** World Bank — World Development Indicators  
-**Dataset:** Health Indicators (September 2021 snapshot)  
+**Dataset:** Health Indicators (September 2021 extract)  
 **Time Period:** 2000–2018
 
 ### Key Variables
 
 | Variable | Description |
 |---|---|
-| Healthcare Spending | Current health expenditure per person in purchasing-power-adjusted international dollars |
+| Healthcare Spending | Current health expenditure per person in current purchasing-power-adjusted international dollars (current PPP). Values are not adjusted for inflation. |
 | Life Expectancy | Life expectancy at birth, measured in years |
 | Country | Country or territory associated with each observation |
-| Region | World Bank geographic region |
+| Region | World Bank region (current classification, e.g., "Middle East, North Africa, Afghanistan & Pakistan") |
 | Year | Observation year from 2000 to 2018 |
 
 ### Data Preparation
@@ -53,14 +52,14 @@ The data was prepared by:
 - Excluding World Bank aggregate regions and income groups.
 - Removing observations missing healthcare spending or life expectancy.
 - Excluding observations with zero or negative healthcare spending.
-- Using a logarithmic scale for healthcare spending.
+- Assigning regions using current World Bank country metadata.
 - Restricting two-year comparisons to countries with complete data in both selected years.
 
 These steps help ensure meaningful comparisons across countries and years.
 
 ### Data Sources
 
-- [World Bank Health Indicators Dataset](https://github.com/light-and-salt/World-Bank-Data-by-Indicators/blob/master/health/health-raw-2021.csv)
+- [World Bank World Development Indicators, health data (September 2021 extract, via the light-and-salt/World-Bank-Data-by-Indicators GitHub repository)](https://github.com/light-and-salt/World-Bank-Data-by-Indicators/blob/master/health/health-raw-2021.csv)
 - [World Bank Country Metadata](https://api.worldbank.org/v2/country?format=json&per_page=400)
 - [World Bank Open Data](https://data.worldbank.org/indicator)
 
@@ -81,7 +80,7 @@ We chose scatter plots because they make it easy to compare two numerical variab
 | **Colors** | World Bank regions | Helps identify geographic patterns |
 | **Side-by-Side Charts** | Two years with identical axes | Enables consistent comparisons over time |
 
-We initially considered a single scatter plot with a year slider but ultimately chose a side-by-side comparison to make changes over time easier to recognize.
+We kept a year slider and added an optional comparison mode that shows an earlier year side by side, making changes over time easier to recognize.
 
 Both charts use the same scales and matching countries, allowing users to compare the relationship across years without being misled by changing axes or missing observations.
 
@@ -91,12 +90,12 @@ Our visualization includes several features designed to encourage exploration.
 
 | Feature | Description |
 |---|---|
-| **Year Selection** | Adjust the slider to explore data from 2000 to 2018. |
-| **Compare Two Years** | View two scatter plots side by side with identical axes to compare changes over time. |
-| **Country Selection** | Click a point or use the dropdown to highlight a country and trace its trajectory. |
-| **Tooltips** | Hover over a country to view its healthcare spending and life expectancy. |
+| **Year Selection** | Use the slider to choose a year from 2000 to 2018. In comparison mode, the slider sets the later year. |
+| **Compare Two Years** | Check the box and choose an earlier year to view two scatter plots side by side with identical axes. |
+| **Pin a Country** | Click a point or use the dropdown to highlight a country and trace its trajectory. Click the point again to unpin it. Points can also be selected with the keyboard (Enter or Space). |
+| **Tooltips** | Hover over a point to view the country, year, healthcare spending, and life expectancy. |
 | **Regional Colors** | Identify geographic patterns using colors assigned to World Bank regions. |
-| **Correlation Analysis** | Compare Pearson's correlation between log healthcare spending and life expectancy across selected years. |
+| **Correlation Analysis** | Shows Pearson's correlation between log healthcare spending and life expectancy. Comparison mode uses only countries with data in both selected years. |
 
 ### Design Considerations
 
@@ -130,6 +129,8 @@ This improved the visualization by making changes over time easier to recognize 
 
 We also incorporated country selection and contextual information to help users interpret differences between countries.
 
+We removed the regional filters from the prototype to keep the controls simple. Regions are still shown by color. We also fixed the x-axis range to the spread of the data, showed the introductory note only for the default 2000 vs. 2018 view, and broke country trails at years with missing data.
+
 ### Challenges
 
 One of our main challenges was balancing interactivity with simplicity.
@@ -137,7 +138,6 @@ One of our main challenges was balancing interactivity with simplicity.
 We wanted users to explore the data independently without overwhelming them with too many controls.
 
 Maintaining consistent axes and comparing countries with complete data for both selected years were also important considerations.
-
 
 ### Team Contributions
 
@@ -148,18 +148,17 @@ Maintaining consistent axes and comparing countries with complete data for both 
 | **Matthew Takeuchi** | Contributed to discussions about the dataset and research question, helped coordinate and record the checkpoint video, and submitted it to Canvas. |
 | **Kristen Oleson** | Reviewed the exploratory graphs, helped coordinate the checkpoint video, contributed to research question discussions, wrote the design rationale and development process documentation, and updated the project README. |
 
-
 ### Development Time
 
-Our team spent approximately **[total people-hours]** developing the visualization.
+Our team spent approximately **[FILL IN]** people-hours developing the visualization.
 
-The most time-consuming aspects were **[confirm main development challenges]**, including data preparation, implementation, and testing.
+The most time-consuming aspects were **[FILL IN]**, including data preparation, implementation, and testing.
 
 ---
 
 ## Key Findings
 
-Our visualization shows a strong positive association between healthcare spending per person and life expectancy.
+Our visualization shows a strong positive association between log healthcare spending per person and life expectancy.
 
 Across **172 countries and territories** with data in both 2000 and 2018, the correlation between log healthcare spending and life expectancy increased from **0.80 in 2000** to **0.84 in 2018**.
 
@@ -201,4 +200,3 @@ These findings demonstrate that healthcare spending alone does not fully explain
 ---
 
 *DSC 209R — Data Visualization | UC San Diego | Fall 2026*
-
