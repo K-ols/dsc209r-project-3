@@ -150,9 +150,12 @@ Maintaining consistent axes and comparing countries with complete data for both 
 
 ### Development Time
 
-Our team spent approximately **[FILL IN]** people-hours developing the visualization.
+Our team spent approximately **12 total people-hours** developing the visualization.
 
-The most time-consuming aspects were **[FILL IN]**, including data preparation, implementation, and testing.
+The most time-consuming aspects were preparing and filtering the data, implementing the interactive features, and making design decisions that minimized potential bias. Building on what we learned in Project 2 about how visualizations can influence interpretation, we focused on presenting the data as fairly and consistently as possible.
+
+This included using identical axes for year-to-year comparisons, filtering for countries with complete data in both selected years, and allowing users to explore the relationships themselves rather than directing them toward a specific conclusion.
+
 
 ---
 
